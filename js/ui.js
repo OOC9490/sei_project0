@@ -1,6 +1,23 @@
 const userInterface = {
     drawOnce: false,
-    currentBoardSpot: undefined,
+    currentBoardSpot: undefined, // a key that will be used to plot the tile the turn player has selected
+
+    checkWinner: function( turnplayer ){
+        this.$winOrDraw.text(`${turnplayer} wins the game!`).animate({
+            opacity: 0
+        },2500, function(){
+            userInterface.$winOrDraw.text(``).css(`opacity`, `1`);
+        });
+    },
+
+    drawAchieved: function (){
+        this.$winOrDraw.text(`This game is a draw!`).animate({
+            opacity: 0
+        },1500, function(){
+            userInterface.$winOrDraw.text(``).css(`opacity`, `1`);
+        });
+    },
+
     turnMessage: function(turnPlayerSymbol, gameState, turnState){
         if ( gameState === true && turnState === false){
             this.$userMsg.text(`The ${turnPlayerSymbol} player still hasn't taken their turn!`);
@@ -9,31 +26,29 @@ const userInterface = {
         }
     },
 
+    //clears the game board when called
     clearBoard: function(){
-        $(`td`).html("");
-        $(`td`).removeClass("crossFilled circleFilled Used");
-        this.$userMsg.text(`The game has been restarted!`);
-        this.$userMsg.animate({
+        $(`td`).html("").removeClass("blue red used");
+        this.$userMsg.text(`The game has been restarted!`).animate({
             opacity: 0
         },1500, function(){
-            userInterface.$userMsg.text(``);
-            userInterface.$userMsg.css(`opacity`, `1`);
+            userInterface.$userMsg.text(``).css(`opacity`, `1`);
         });
         this.drawOnce = false;
     },
 
+    //Switches between UI button holders
     toggleHolders: function(buttonPressed){
         if ( buttonPressed.hasClass(`cross`) || buttonPressed.hasClass(`circle`)){
-            this.$buttonHolders.eq(0).hide();
-            this.$buttonHolders.eq(1).show();
-        }else if ( buttonPressed.hasClass(`Restart`)){
+            this.$buttonHolders.toggle();
+        }else if ( buttonPressed.hasClass(`restart`)){
             gameLogic.restartGame();
             this.clearBoard();
-            this.$buttonHolders.eq(0).show();
-            this.$buttonHolders.eq(1).hide();
+            this.$buttonHolders.toggle();
         };
     },
     
+    //determines which UI button has been pressed
     checkButton: function(buttonPressed){
         if (buttonPressed.hasClass(`cross`)){
             const priority = `X`;
@@ -43,7 +58,7 @@ const userInterface = {
             const priority = `O`;
             gameLogic.gameStart(priority, `X`);
             this.toggleHolders(buttonPressed);
-        }else if (buttonPressed.hasClass(`Pass`)){
+        }else if (buttonPressed.hasClass(`pass`)){
             gameLogic.switchTurn();
             this.drawOnce = false;
         }else{
@@ -51,25 +66,24 @@ const userInterface = {
         }   
     },
 
+    //function checks whether or not the clicked tile is being used and draws according to whos turn it is or erases it if the tile was filled this turn
     fillGrid: function(gridContents, gridLocation){
         if (gridContents === ``){
             if (gameLogic.currentPlayerTurn === `X`){
-                gridLocation.addClass(`crossFilled`);
-                gridLocation.html(`X`);
+                gridLocation.addClass(`blue`).html(`X`);// X tiles are always blue
                 this.drawOnce = true;
             }else{
-                gridLocation.addClass(`circleFilled`);
-                gridLocation.html(`O`);
+                gridLocation.addClass(`red`).html(`O`);// O tiles are always red
                 this.drawOnce = true;
             }
-        }else if (gridContents === gameLogic.currentPlayerTurn &&gridLocation.hasClass(`Used`) === false){
-            gridLocation.removeClass(`crossFilled circleFilled Used`);
-            gridLocation.html(``);
+        }else if (gridContents === gameLogic.currentPlayerTurn &&gridLocation.hasClass(`used`) === false){
+            gridLocation.removeClass(`blue red`).html(``);
             this.drawOnce = false;
             gameLogic.turnCompleteToggle();
         };
     },
 
+    //Ensures that the game is running before drawing on the board
     drawOrErase: function(gridLocation){
         if ( gridLocation.html() === `` && this.drawOnce === false && gameLogic.gameOnGoing === true){
             this.fillGrid(gridLocation.html(), gridLocation);
@@ -81,6 +95,7 @@ const userInterface = {
         };
     },
 };
+//prepares event listeners and userInterface object keys to be used during UI management
 $(document).ready(function(){
     $(`.userButton`).on(`click`,function(){
         userInterface.checkButton($(this));
@@ -90,4 +105,5 @@ $(document).ready(function(){
     })
     userInterface.$buttonHolders = $(`.buttonHolder`);
     userInterface.$userMsg = $(`.userMessages p`);
+    userInterface.$winOrDraw = $(`.winOrDrawMsg p`);
 });
