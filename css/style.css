@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
 
 td {
-    border: 1px solid black;
+    border: 2px solid black;
     height: 150px;
     width: 150px;
 }
@@ -40,7 +40,7 @@ body {
 
 #gameDescription p{
     width: 60%;
-    font-size: 12px;
+    font-size: 16px;
     text-align: justify;
     margin: 0 auto;
 }
@@ -78,4 +78,14 @@ footer {
     width:100%;
     bottom:0;
     padding: 0 0 5px 5px;
+}
+
+.crossFilled{
+    background-color:blue;
+    color: white;
+}
+
+.circleFilled{
+    background-color:red;
+    color: white;
 }
