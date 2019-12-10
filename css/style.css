@@ -25,12 +25,12 @@ body {
     width:150px;
     border-radius: 20%;
     margin: 0 10px;
-    font-size: 16px;
+    font-size: 12px;
 
 }
 
 .inGame{
-    visibility: hidden;
+    display: none;
 }
 
 .userButton:hover{
@@ -39,7 +39,7 @@ body {
 }
 
 #gameDescription p{
-    width: 50%;
+    width: 60%;
     font-size: 12px;
     text-align: justify;
     margin: 0 auto;
@@ -77,4 +77,5 @@ footer {
     position: fixed;
     width:100%;
     bottom:0;
+    padding: 0 0 5px 5px;
 }
