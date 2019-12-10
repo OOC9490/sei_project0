@@ -8,8 +8,7 @@ const gameLogic = {
     
     winOrDraw: function (turnPlayer){
         if (this.tilesFilled === 9 && this.gameOnGoing === true){
-            this.restartGame();
-            userInterface.clearBoard();
+            $(`.Restart`).click();
             return;
         }
         if (this.currentPlayerTurn === this.playerOneSymbol){
@@ -33,6 +32,7 @@ const gameLogic = {
     restartGame: function (){
         this.gameOnGoing = false;
         this.turnComplete = true;
+        this.tilesFilled = 0;
         this.playerOneSymbol = ``;
         this.playerTwoSymbol = ``;
     },

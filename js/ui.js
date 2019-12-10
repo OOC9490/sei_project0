@@ -11,7 +11,7 @@ const userInterface = {
 
     clearBoard: function(){
         $(`td`).html("");
-        $(`td`).removeClass("crossFilled circleFilled");
+        $(`td`).removeClass("crossFilled circleFilled Used");
         this.$userMsg.text(`The game has been restarted!`);
         this.$userMsg.animate({
             opacity: 0
@@ -63,7 +63,7 @@ const userInterface = {
                 this.drawOnce = true;
             }
         }else if (gridContents === gameLogic.currentPlayerTurn &&gridLocation.hasClass(`Used`) === false){
-            gridLocation.removeClass(`crossFilled circleFilled`);
+            gridLocation.removeClass(`crossFilled circleFilled Used`);
             gridLocation.html(``);
             this.drawOnce = false;
             gameLogic.turnCompleteToggle();
