@@ -2,8 +2,9 @@ const userInterface = {
     drawOnce: false,
     currentBoardSpot: undefined, // a key that will be used to plot the tile the turn player has selected
 
-    checkWinner: function( turnplayer ){
-        this.$winOrDraw.text(`${turnplayer} wins the game!`).animate({
+    winDrawMsg: function( turnplayer ){
+        this.$userMsg.text(``);
+        this.$winOrDraw.text(`${turnplayer} wins the game! Please wait for the next game...`).animate({
             opacity: 0
         },2500, function(){
             userInterface.$winOrDraw.text(``).css(`opacity`, `1`);
@@ -11,9 +12,10 @@ const userInterface = {
     },
 
     drawAchieved: function (){
-        this.$winOrDraw.text(`This game is a draw!`).animate({
+        this.$userMsg.text(``);
+        this.$winOrDraw.text(`This game is a draw! Please wait for the next game...`).animate({
             opacity: 0
-        },1500, function(){
+        },2500, function(){
             userInterface.$winOrDraw.text(``).css(`opacity`, `1`);
         });
     },
@@ -31,7 +33,7 @@ const userInterface = {
         $(`td`).html("").removeClass("blue red used");
         this.$userMsg.text(`The game has been restarted!`).animate({
             opacity: 0
-        },1500, function(){
+        },2000, function(){
             userInterface.$userMsg.text(``).css(`opacity`, `1`);
         });
         this.drawOnce = false;

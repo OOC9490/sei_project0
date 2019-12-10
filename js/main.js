@@ -6,43 +6,43 @@ const gameLogic = {
     currentPlayerTurn: ``,
     tilesFilled: 0,
     winningCombos: [
-        "#one.color","#two.color","#three.color",      "#four.color","#five.color","#six.color",
-        "#seven.color","#eight.color","#nine.color",
-        "#one.color","#four.color","#seven.color",
-        "#two.color","#five.color","#eight.color",
-        "#three.color","#six.color","#nine.color",
-        "#one.color","#five.color","#nine.color",
-        "#three.color","#five.color","#seven.color"
+        "#one.color, #two.color, #three.color",      "#four.color, #five.color, #six.color",
+        "#seven.color, #eight.color, #nine.color",
+        "#one.color, #four.color, #seven.color",
+        "#two.color, #five.color, #eight.color",
+        "#three.color, #six.color, #nine.color",
+        "#one.color, #five.color, #nine.color",
+        "#seven.color, #five.color, #three.color"
     ],// the game will map the current board state (based on an id and class selector)) at the end of the turn against this array to determine whether not a player has won
     
     //maps the current board state against the known winning combos
     findWinningCombo: function(array, string) {
         return array.map(function(combo) {
           let eachCombo = combo.replace(/color/g, string);
-          return eachCombo = $(`${eachCombo}`).length === 3;
+          return eachCombo = $(eachCombo).length === 3;
         })
     },
 
     //tries to determine whether or not there is a winner or a draw after a move is confirmed and continues the game if not 
     winOrDraw: function (){
-        let tileToCheck = ``;
-        if ( this.currentPlayerTurn === `X`){
-            tileToCheck = `blue`;
-        }else{
-            tileToCheck = `red`;
-        };
-        const winnerFound = this.findWinningCombo(this.winningCombos, tileToCheck).includes(true);
-        if ( winnerFound ){
-            userInterface.checkWinner(this.currentPlayerTurn);
-            this.gameOnGoing = false;
+        const blueGameState = this.findWinningCombo(this.winningCombos, `blue`);
+        const redGameState = this.findWinningCombo(this.winningCombos, `red`);
+        const blueWinner = blueGameState.includes(true);
+        const redWinner = redGameState.includes(true);
+        if ( blueWinner || redWinner ){
+            this.gameOnGoing = false; //stops the user from interacting with the board
+            userInterface.winDrawMsg(this.currentPlayerTurn);
             setTimeout(function(){
                 $(`.restart`).click();
              },2500);
-            return
+            return;
         }; //determines whether or not there is a winner
         if (this.tilesFilled === 9 && this.gameOnGoing === true){
+            this.gameOnGoing = false; //same as above
             userInterface.drawAchieved();
-            $(`.restart`).click();
+            setTimeout(function(){
+                $(`.restart`).click();
+            },2500);
             return;
         }; //determines whether or not there is a draw
         if (this.currentPlayerTurn === this.playerOneSymbol){
