@@ -12,7 +12,7 @@ const userInterface = {
         };
         this.$winOrDraw.text(msgOutput).animate({
             opacity: 0
-        },2500, function(){
+        },4000, function(){
             userInterface.$winOrDraw.text(``).css(`opacity`, `1`);
         });
         $(`.restart`).click();

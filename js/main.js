@@ -19,10 +19,10 @@ const gameLogic = {
     ],// the game will map the current board state (based on an id and class selector)) at the end of the turn against this array to determine whether not a player has won
     
     //maps the current board state against the known winning combos
-    findWinningCombo: function(array, string) {
-        return array.map(function(combo) {
-          let eachCombo = combo.replace(/color/g, string);
-          return eachCombo = $(eachCombo).length === 3;
+    findWinningCombo: function(winConArray, colour) {
+        return winConArray.map(function(winCon) {
+          let winConChecker = winCon.replace(/color/g, colour);
+          return winConChecker = $(winConChecker).length === 3;
         })
     },
 
