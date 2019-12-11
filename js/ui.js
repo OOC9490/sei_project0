@@ -51,13 +51,12 @@ const userInterface = {
 
     //Switches between UI button holders
     toggleHolders: function(buttonPressed){
+        this.$buttonHolders.toggle();
         if ( buttonPressed.hasClass(`cross`) || buttonPressed.hasClass(`circle`)){
-            this.$buttonHolders.toggle();
             $(`td`).addClass(`gridEffect`);
         }else if ( buttonPressed.hasClass(`restart`)){
             gameLogic.restartGame();
             this.clearBoard();
-            this.$buttonHolders.toggle();
         };
     },
     
@@ -72,7 +71,9 @@ const userInterface = {
             gameLogic.gameStart(priority, `X`);
             this.toggleHolders(buttonPressed);
         }else if (buttonPressed.hasClass(`pass`)){
-            userInterface.currentBoardSpot.addClass(`used`);
+            if (this.currentBoardSpot !== undefined){
+                this.currentBoardSpot.addClass(`used`);
+            };//prevents the console from throwing errors when the board is fresh
             $(`td:not(".used")`).addClass(`gridEffect`);
             gameLogic.switchTurn();
             this.drawOnce = false;
@@ -91,7 +92,7 @@ const userInterface = {
             }else{
                 gridLocation.addClass(`red`).html(`O`);// O tiles are always red
             }
-        }else if (gridContents === gameLogic.currentPlayerTurn &&gridLocation.hasClass(`used`) === false){
+        }else if (gridContents === gameLogic.currentPlayerTurn && gridLocation.hasClass(`used`) === false){
             gridLocation.removeClass(`blue red`).html(``);
             $(`td:not(".used")`).addClass(`gridEffect`);
             this.drawOnce = false;
@@ -111,7 +112,7 @@ const userInterface = {
         };
     },
 };
-//prepares event listeners and userInterface object keys to be used during UI management
+
 $(document).ready(function(){
     $(`.userButton`).on(`click`,function(){
         userInterface.checkButton($(this));

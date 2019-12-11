@@ -9,24 +9,24 @@ const gameLogic = {
     oWins: 0,
     tilesFilled: 0,
     winningCombos: [
-        "#one.color, #two.color, #three.color",      "#four.color, #five.color, #six.color",
-        "#seven.color, #eight.color, #nine.color",
-        "#one.color, #four.color, #seven.color",
-        "#two.color, #five.color, #eight.color",
-        "#three.color, #six.color, #nine.color",
-        "#one.color, #five.color, #nine.color",
-        "#seven.color, #five.color, #three.color"
-    ],// the game will map the current board state (based on an id and class selector)) at the end of the turn against this array to determine whether not a player has won
+        "#one.colour, #two.colour, #three.colour",
+        "#four.colour, #five.colour, #six.colour",
+        "#seven.colour, #eight.colour, #nine.colour",
+        "#one.colour, #four.colour, #seven.colour",
+        "#two.colour, #five.colour, #eight.colour",
+        "#three.colour, #six.colour, #nine.colour",
+        "#one.colour, #five.colour, #nine.colour",
+        "#seven.colour, #five.colour, #three.colour"
+    ],//winning combos are found based on finding elements with a matching id and class arranged in a manner specified above 
     
     //maps the current board state against the known winning combos
     findWinningCombo: function(winConArray, colour) {
         return winConArray.map(function(winCon) {
-          let winConChecker = winCon.replace(/color/g, colour);
+          let winConChecker = winCon.replace(/colour/g, colour);
           return winConChecker = $(winConChecker).length === 3;
         })
     },
 
-    //tries to determine whether or not there is a winner or a draw after a move is confirmed and continues the game if not 
     winOrDraw: function (){
         const blueGameState = this.findWinningCombo(this.winningCombos, `blue`);
         const redGameState = this.findWinningCombo(this.winningCombos, `red`);
