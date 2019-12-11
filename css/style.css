@@ -15,17 +15,17 @@ h1 {
 
 .buttonHolder{
     position: relative;
-    width: 50vh;
-    margin: 50px auto 0;
+    width: 75vh;
+    margin: 20px auto 0;
     height: 100px;
 }
 
 .userButton {
     height:50px;
-    width:150px;
+    width:75px;
     border-radius: 20%;
     margin: 0 10px;
-    font-size: 12px;
+    font-size: 10px;
 
 }
 
@@ -39,8 +39,8 @@ h1 {
 }
 
 #gameDescription p{
-    width: 60vw;
-    font-size: 16px;
+    width: 80vw;
+    font-size: 13px;
     text-align: justify;
     margin: 0 auto;
     position: relative;
@@ -57,15 +57,15 @@ h1, .buttonHolder, td {
 table {
     border-spacing: 0;
     position: relative;
-    left: calc(50% - 240px);
+    left: calc(50% - 125px);
     z-index: 2;
 }
 
 td {
     border: 2px solid black;
     border-radius: 20%;
-    height: 150px;
-    width: 150px;
+    height: 75px;
+    width: 75px;
 }
 
 .userMessages, .winOrDrawMsg{
