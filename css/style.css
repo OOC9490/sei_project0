@@ -45,7 +45,7 @@ h1 {
     position: relative;
 }
 
-header, td, #gameDescription, .userButton, footer, p, .scoreLabel {
+header, td, div, .userButton, footer {
     font-family: 'Press Start 2P', cursive;
 }
 
@@ -75,6 +75,7 @@ td {
     font-size: 14px;
 }
 
+
 td {
     font-size: 48px;
 }
@@ -96,7 +97,7 @@ footer {
 
 .gameContainer{
     display:inline-block;
-    left: calc(50vw - 266px);
+    left: calc(50vw - 280px);
     position: relative;
 }
 

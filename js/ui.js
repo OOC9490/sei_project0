@@ -35,7 +35,7 @@ const userInterface = {
     clearBoard: function(){
         $(`.userButton`).off(`click`);
         $(`td`).html("").removeClass("blue red gridEffect used").off(`click`);
-        this.$userMsg.text(`The game has been restarted! Please wait...`).animate({
+        this.$userMsg.text(`RESTARTING! Please wait...`).animate({
             opacity: 0
         },4000, function(){
             userInterface.$userMsg.text(``).css(`opacity`, `1`);
@@ -120,6 +120,6 @@ $(document).ready(function(){
         userInterface.drawOrErase($(this));
     });
     userInterface.$buttonHolders = $(`.buttonHolder`);
-    userInterface.$userMsg = $(`.userMessages p`);
-    userInterface.$winOrDraw = $(`.winOrDrawMsg p`);
+    userInterface.$userMsg = $(`.userMessages`);
+    userInterface.$winOrDraw = $(`.winOrDrawMsg`);
 });
