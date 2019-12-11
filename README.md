@@ -37,7 +37,7 @@ I started the project having "separation of concerns" in mind and was able to su
 
 ## Problems in the creation of Tic Tac Toe
 1. Not hard coding "winning combinations" for the program to check against
-2. Pre-rendering a gameboard - this limited me to 3 by 3 board, but it wasn't something I wanted to prioritise heavily in creating the program.
+2. Pre-rendering a gameboard - this limited me to a 3 by 3 board, but it wasn't something I wanted to prioritise heavily in creating the program.
 
 ## For the future
 - [ ] Addition of an AI that utilises the "Minimax Algorithm"
