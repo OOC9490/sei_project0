@@ -20,6 +20,11 @@ const userInterface = {
         },2500);
     },
 
+    //increases the win counter for the appropriate player
+    increaseTally: function ( winningPlayer, tallyValue ){
+        $(`.${winningPlayer} p`).html(`${tallyValue}`);
+    },
+
     turnMessage: function(turnPlayerSymbol, gameState, turnState){
         if ( gameState === true && turnState === false){
             this.$userMsg.text(`The ${turnPlayerSymbol} player still hasn't taken their turn!`);

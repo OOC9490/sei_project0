@@ -7,7 +7,7 @@ body {
 }
 
 h1 {
-    margin: 0 0 20px 0;
+    margin: 0 0 10px 0;
     background-color: slategrey;
     color: white;
     padding: 10px 0 10px;
@@ -16,7 +16,7 @@ h1 {
 .buttonHolder{
     position: relative;
     width: 75vh;
-    margin: 20px auto 0;
+    margin: 10px auto 0;
     height: 60px;
 }
 
@@ -69,7 +69,7 @@ td {
 .userMessages, .winOrDrawMsg{
     position: relative;
     width: 100%;
-    height: 40px;
+    height: 20px;
     text-align: center;
     /* padding: px 0 0 0; */
     font-size: 14px;
@@ -78,6 +78,7 @@ td {
 td {
     font-size: 48px;
 }
+
 footer {
     position: fixed;
     color: white;
@@ -91,17 +92,20 @@ footer {
     background-color:blue;
     color: white;
 }
+
 .gameContainer{
     display:inline-block;
-    left: calc(50vw - 240px);
+    left: calc(50vw - 260px);
     position: relative;
 }
+
 .scoreLabel{
     display: inline-block;
     position: relative;
     text-align: center;
+    margin: 0 10px;
+    bottom: 98px;
 }
-
 
 .red{
     background-color:red;

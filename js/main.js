@@ -5,6 +5,8 @@ const gameLogic = {
     playerOneSymbol: ``,
     playerTwoSymbol: ``,
     currentPlayerTurn: ``,
+    xWins: 0,
+    oWins: 0,
     tilesFilled: 0,
     winningCombos: [
         "#one.color, #two.color, #three.color",      "#four.color, #five.color, #six.color",
@@ -30,8 +32,17 @@ const gameLogic = {
         const redGameState = this.findWinningCombo(this.winningCombos, `red`);
         const blueWinner = blueGameState.includes(true);
         const redWinner = redGameState.includes(true);
+        let tallyUpdate = 0;
         if ( blueWinner || redWinner ){
+            if ( blueWinner === true){
+                this.xWins++;
+                tallyUpdate = this.xWins;
+            }else{
+                this.oWins++;
+                tallyUpdate = this.oWins;
+            };
             this.gameOnGoing = false; //stops the user from interacting with the board
+            userInterface.increaseTally(this.currentPlayerTurn, tallyUpdate);
             userInterface.winDrawMsg(this.currentPlayerTurn, this.isDraw);
             return;
         }; //determines whether or not there is a winner
@@ -74,7 +85,7 @@ const gameLogic = {
             this.winOrDraw();
         }else{
             userInterface.turnMessage(this.currentPlayerTurn, this.gameOnGoing, this.turnComplete);
-        }
+        };
     },
 
     gameStart: function (firstPlayer, secondPlayer) {
