@@ -96,7 +96,7 @@ footer {
 
 .gameContainer{
     display:inline-block;
-    left: calc(50vw - 260px);
+    left: calc(50vw - 266px);
     position: relative;
 }
 
@@ -104,11 +104,19 @@ footer {
     display: inline-block;
     position: relative;
     text-align: center;
+    padding: 3px 0 0 3px;
     margin: 0 10px;
     bottom: 98px;
+    border: solid 3px;
+    border-color: darkgray slategray black black;
 }
 
 .red{
     background-color:red;
     color: white;
+}
+
+.gridEffect:hover {
+    background-image: url("../images/redBlueSwirl.gif");
+    background-size: cover;
 }

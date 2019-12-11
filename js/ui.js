@@ -34,7 +34,7 @@ const userInterface = {
     //clears the game board when called and turns off buttons until the loading message disappears
     clearBoard: function(){
         $(`.userButton`).off(`click`);
-        $(`td`).html("").removeClass("blue red used").off(`click`);
+        $(`td`).html("").removeClass("blue red gridEffect used").off(`click`);
         this.$userMsg.text(`The game has been restarted! Please wait...`).animate({
             opacity: 0
         },4000, function(){
@@ -53,6 +53,7 @@ const userInterface = {
     toggleHolders: function(buttonPressed){
         if ( buttonPressed.hasClass(`cross`) || buttonPressed.hasClass(`circle`)){
             this.$buttonHolders.toggle();
+            $(`td`).addClass(`gridEffect`);
         }else if ( buttonPressed.hasClass(`restart`)){
             gameLogic.restartGame();
             this.clearBoard();
@@ -71,8 +72,9 @@ const userInterface = {
             gameLogic.gameStart(priority, `X`);
             this.toggleHolders(buttonPressed);
         }else if (buttonPressed.hasClass(`pass`)){
-            gameLogic.switchTurn();
             userInterface.currentBoardSpot.addClass(`used`);
+            $(`td:not(".used")`).addClass(`gridEffect`);
+            gameLogic.switchTurn();
             this.drawOnce = false;
         }else{
             this.toggleHolders(buttonPressed);
@@ -82,15 +84,16 @@ const userInterface = {
     //function checks whether or not the clicked tile is being used and draws according to whos turn it is or erases it if the tile was filled this turn
     fillGrid: function(gridContents, gridLocation){
         if (gridContents === ``){
+            $(`td`).removeClass(`gridEffect`);
+            this.drawOnce = true;
             if (gameLogic.currentPlayerTurn === `X`){
                 gridLocation.addClass(`blue`).html(`X`);// X tiles are always blue
-                this.drawOnce = true;
             }else{
                 gridLocation.addClass(`red`).html(`O`);// O tiles are always red
-                this.drawOnce = true;
             }
         }else if (gridContents === gameLogic.currentPlayerTurn &&gridLocation.hasClass(`used`) === false){
             gridLocation.removeClass(`blue red`).html(``);
+            $(`td:not(".used")`).addClass(`gridEffect`);
             this.drawOnce = false;
             gameLogic.turnCompleteToggle();
         };
