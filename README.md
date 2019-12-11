@@ -41,7 +41,7 @@ I started the project having "separation of concerns" in mind and was able to su
 
 ## For the future
 - [ ] Addition of an AI that utilises the "Minimax Algorithm"
-- [ ] Implementing A more responsive interface
+- [ ] Implementing a more responsive interface
 - [ ] Rendering and handling a larger game board
 - [ ] Enable the use of different player tokens
 - [ ] Community Suggestions
