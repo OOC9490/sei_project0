@@ -23,8 +23,8 @@ const userInterface = {
         $(`.${winningPlayer} p`).html(`${tallyValue}`);
     },
 
-    turnMessage: function(turnPlayerSymbol, gameState, turnState){
-        if ( gameState === true && turnState === false){
+    turnMessage: function(turnPlayerSymbol, gameState, turnOver){
+        if ( gameState === true && turnOver === false){
             this.$userMsg.text(`The ${turnPlayerSymbol} player still hasn't taken their turn!`);
         } else {
             this.$userMsg.text(`It is ${turnPlayerSymbol} player's turn!`);
@@ -34,7 +34,7 @@ const userInterface = {
     //clears the game board when called and turns off buttons until the loading message disappears
     clearBoard: function(){
         $(`.userButton`).off(`click`);
-        $(`td`).html("").removeClass("blue red gridEffect used").off(`click`);
+        $(`td`).html(``).removeClass(`blue red gridEffect used`).off(`click`);
         this.$userMsg.text(`RESTARTING! Please wait...`).animate({
             opacity: 0
         },4000, function(){

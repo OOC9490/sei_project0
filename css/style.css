@@ -49,7 +49,7 @@ header, td, div, .userButton, footer {
     font-family: 'Press Start 2P', cursive;
 }
 
-h1, .buttonHolder, td {
+h1, .buttonHolder, td, .userMessages, .winOrDrawMsg {
     text-align: center;
 }
 
@@ -70,7 +70,6 @@ td {
     position: relative;
     width: 100%;
     height: 20px;
-    text-align: center;
     /* padding: px 0 0 0; */
     font-size: 14px;
 }
@@ -109,7 +108,7 @@ footer {
     margin: 0 10px;
     bottom: 98px;
     border: solid 3px;
-    border-color: darkgray slategray black black;
+    border-color: darkgray black black slategray;
 }
 
 .red{
