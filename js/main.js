@@ -1,6 +1,7 @@
 const gameLogic = {
     gameOnGoing: false,
     turnComplete: true,
+    isDraw: false,
     playerOneSymbol: ``,
     playerTwoSymbol: ``,
     currentPlayerTurn: ``,
@@ -31,18 +32,13 @@ const gameLogic = {
         const redWinner = redGameState.includes(true);
         if ( blueWinner || redWinner ){
             this.gameOnGoing = false; //stops the user from interacting with the board
-            userInterface.winDrawMsg(this.currentPlayerTurn);
-            setTimeout(function(){
-                $(`.restart`).click();
-             },2500);
+            userInterface.winDrawMsg(this.currentPlayerTurn, this.isDraw);
             return;
         }; //determines whether or not there is a winner
         if (this.tilesFilled === 9 && this.gameOnGoing === true){
             this.gameOnGoing = false; //same as above
-            userInterface.drawAchieved();
-            setTimeout(function(){
-                $(`.restart`).click();
-            },2500);
+            this.isDraw = true;
+            userInterface.winDrawMsg(this.currentPlayerTurn, this.isDraw);
             return;
         }; //determines whether or not there is a draw
         if (this.currentPlayerTurn === this.playerOneSymbol){
@@ -66,6 +62,7 @@ const gameLogic = {
     restartGame: function (){
         this.gameOnGoing = false;
         this.turnComplete = true;
+        this.isDraw = false;
         this.tilesFilled = 0;
         this.playerOneSymbol = ``;
         this.playerTwoSymbol = ``;

@@ -45,7 +45,7 @@ h1 {
     position: relative;
 }
 
-header, td, #gameDescription, .userButton, footer, p {
+header, td, #gameDescription, .userButton, footer, p, .scoreLabel {
     font-family: 'Press Start 2P', cursive;
 }
 
@@ -56,8 +56,7 @@ h1, .buttonHolder, td {
 table {
     border-spacing: 0;
     position: relative;
-    left: calc(50% - 125px);
-    z-index: 2;
+    display: inline-block;
 }
 
 td {
@@ -92,6 +91,17 @@ footer {
     background-color:blue;
     color: white;
 }
+.gameContainer{
+    display:inline-block;
+    left: calc(50vw - 240px);
+    position: relative;
+}
+.scoreLabel{
+    display: inline-block;
+    position: relative;
+    text-align: center;
+}
+
 
 .red{
     background-color:red;

@@ -2,22 +2,22 @@ const userInterface = {
     drawOnce: false,
     currentBoardSpot: undefined, // a key that will be used to plot the tile the turn player has selected
 
-    winDrawMsg: function( turnplayer ){
+    winDrawMsg: function( turnplayer, drawCheck ){
+        let msgOutput = ``;
         this.$userMsg.text(``);
-        this.$winOrDraw.text(`${turnplayer} wins the game! Please wait for the next game...`).animate({
+        if (drawCheck){
+            msgOutput = `This game is a draw! Loading next game...`;
+        }else{
+            msgOutput = `${turnplayer} is the winner! Loading next game...`;
+        };
+        this.$winOrDraw.text(msgOutput).animate({
             opacity: 0
         },2500, function(){
             userInterface.$winOrDraw.text(``).css(`opacity`, `1`);
         });
-    },
-
-    drawAchieved: function (){
-        this.$userMsg.text(``);
-        this.$winOrDraw.text(`This game is a draw! Please wait for the next game...`).animate({
-            opacity: 0
-        },2500, function(){
-            userInterface.$winOrDraw.text(``).css(`opacity`, `1`);
-        });
+        setTimeout(function(){
+            $(`.restart`).click();
+        },2500);
     },
 
     turnMessage: function(turnPlayerSymbol, gameState, turnState){
