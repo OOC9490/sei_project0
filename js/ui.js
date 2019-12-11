@@ -6,18 +6,16 @@ const userInterface = {
         let msgOutput = ``;
         this.$userMsg.text(``);
         if (drawCheck){
-            msgOutput = `This game is a draw! Loading next game...`;
+            msgOutput = `This game is a draw!`;
         }else{
-            msgOutput = `${turnplayer} is the winner! Loading next game...`;
+            msgOutput = `${turnplayer} is the winner!`;
         };
         this.$winOrDraw.text(msgOutput).animate({
             opacity: 0
         },2500, function(){
             userInterface.$winOrDraw.text(``).css(`opacity`, `1`);
         });
-        setTimeout(function(){
-            $(`.restart`).click();
-        },2500);
+        $(`.restart`).click();
     },
 
     //increases the win counter for the appropriate player
@@ -33,13 +31,20 @@ const userInterface = {
         }
     },
 
-    //clears the game board when called
+    //clears the game board when called and turns off buttons until the loading message disappears
     clearBoard: function(){
-        $(`td`).html("").removeClass("blue red used");
-        this.$userMsg.text(`The game has been restarted!`).animate({
+        $(`.userButton`).off(`click`);
+        $(`td`).html("").removeClass("blue red used").off(`click`);
+        this.$userMsg.text(`The game has been restarted! Please wait...`).animate({
             opacity: 0
-        },2000, function(){
+        },4000, function(){
             userInterface.$userMsg.text(``).css(`opacity`, `1`);
+            $(`.userButton`).on(`click`,function(){
+                userInterface.checkButton($(this));
+            });
+            $(`td`).on(`click`, function(){
+                userInterface.drawOrErase($(this));
+            });
         });
         this.drawOnce = false;
     },
@@ -67,6 +72,7 @@ const userInterface = {
             this.toggleHolders(buttonPressed);
         }else if (buttonPressed.hasClass(`pass`)){
             gameLogic.switchTurn();
+            userInterface.currentBoardSpot.addClass(`used`);
             this.drawOnce = false;
         }else{
             this.toggleHolders(buttonPressed);
@@ -109,7 +115,7 @@ $(document).ready(function(){
     });
     $(`td`).on(`click`, function(){
         userInterface.drawOrErase($(this));
-    })
+    });
     userInterface.$buttonHolders = $(`.buttonHolder`);
     userInterface.$userMsg = $(`.userMessages p`);
     userInterface.$winOrDraw = $(`.winOrDrawMsg p`);

@@ -59,7 +59,6 @@ const gameLogic = {
         };
         userInterface.turnMessage(this.currentPlayerTurn, this.gameOnGoing, this.turnComplete);
         this.turnCompleteToggle();
-        userInterface.currentBoardSpot.addClass(`used`);
     },
 
     turnCompleteToggle: function (){
