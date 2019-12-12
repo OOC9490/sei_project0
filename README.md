@@ -45,7 +45,7 @@ I started the project having "separation of concerns" in mind and was able to su
 - standard jQuery JS library [https://jquery.com/download/]
 
 ## Problems in the creation of Tic Tac Toe
-1. Not hard coding "winning combinations" for the program to check against
+1. Hard coding "winning combinations" for the program to check against
 2. Pre-rendering a gameboard - this limited me to a 3 by 3 board, but it wasn't something I wanted to prioritise heavily in creating the program.
 3. Not being able to implement the game with enough logic to determine a draw before the entire game board is filled.
 
