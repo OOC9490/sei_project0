@@ -24,7 +24,9 @@ I started the project having "separation of concerns" in mind and was able to su
 - Player win tallies
 - The use of html element classes for the application styles and certain logic checks
 - Players can switch tiles if they change their mind
+- An informative user interface
 - Game progression is managed by the user (details below)
+
 - User interface manipulation and game logic files are kept separate from each other
 
 ## Playing the application
