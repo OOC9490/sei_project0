@@ -1,5 +1,5 @@
 const userInterface = {
-    drawOnce: false,
+    drawnOnce: false,
     $currentTileSelected: undefined, // a key that will be used to plot the tile the turn player has selected
     $tilesNotUsed: undefined, //will be defined once the game is going
 
@@ -62,14 +62,15 @@ const userInterface = {
                 userInterface.drawOrErase($(this));
             });
         });
-        this.drawOnce = false;
+        this.drawnOnce = false;
     },
 
     //Switches between UI button holders
     toggleHolders: function(buttonPressed){
         this.$buttonHolders.toggle();
         if ( buttonPressed.hasClass(`cross`) || buttonPressed.hasClass(`circle`)){
-            $(`td`).addClass(`gridEffect`);
+            this.$tilesNotUsed = $(`td:not(".used")`);
+            this.$tilesNotUsed.addClass(`gridEffect`);
             if ( $(`#aiDropdown`).val() === `Player vs CPU`){
                 gameLogic.computerEnabled = true;
             };
@@ -96,7 +97,7 @@ const userInterface = {
             this.$tilesNotUsed = $(`td:not(".used")`);
             this.$tilesNotUsed.addClass(`gridEffect`);
             gameLogic.switchTurn();
-            this.drawOnce = false;
+            this.drawnOnce = false;
         }else{
             this.toggleHolders(buttonPressed);
         }   
@@ -106,7 +107,7 @@ const userInterface = {
     fillGrid: function(gridContents, gridLocation){
         if (gridContents === ``){
             $(`td`).removeClass(`gridEffect`);
-            this.drawOnce = true;
+            this.drawnOnce = true;
             if (gameLogic.currentPlayerTurn === `X`){
                 gridLocation.addClass(`blue`).html(`X`);// X tiles are always blue
             }else{
@@ -115,14 +116,14 @@ const userInterface = {
         }else if (gridContents === gameLogic.currentPlayerTurn && gridLocation.hasClass(`used`) === false){
             gridLocation.removeClass(`blue red`).html(``);
             $(`td:not(".used")`).addClass(`gridEffect`);
-            this.drawOnce = false;
+            this.drawnOnce = false;
             gameLogic.turnCompleteToggle();
         };
     },
 
     //Ensures that the game is running before drawing on the board
     drawOrErase: function(gridLocation){
-        if ( gridLocation.html() === `` && this.drawOnce === false && gameLogic.gameOnGoing === true){
+        if ( gridLocation.html() === `` && this.drawnOnce === false && gameLogic.gameOnGoing === true){
             this.fillGrid(gridLocation.html(), gridLocation);
             this.$currentTileSelected = gridLocation;
             gameLogic.turnCompleteToggle();

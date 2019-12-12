@@ -44,7 +44,9 @@ const gameLogic = {
         });
     },
 
-    winOrDraw: function (){
+    //determines whether or not the gamestate has a winner or loser, or a draw has been reached, continues the game if not
+    //also calls CPU player if the option was enabled
+    gameManagement: function (){
         const blueGameState = this.findWinningCombo(this.winningCombos, `blue`);
         const redGameState = this.findWinningCombo(this.winningCombos, `red`);
         const blueWinner = blueGameState.includes(true);
@@ -108,7 +110,7 @@ const gameLogic = {
     switchTurn: function(){
         if ( this.turnComplete ){
             this.tilesFilled++;
-            this.winOrDraw();
+            this.gameManagement();
         }else{
             userInterface.turnMessage(this.currentPlayerTurn, this.gameOnGoing, this.turnComplete);
         };
@@ -121,5 +123,11 @@ const gameLogic = {
         userInterface.turnMessage(this.currentPlayerTurn, this.gameOnGoing, this.turnComplete);
         this.gameOnGoing = true;
         this.turnComplete = false;
+        if (this.computerEnabled === true){
+            this.humanHasMoved = true;
+            if (Math.random() >= 0.5){
+                this.computerPlays(userInterface.$tilesNotUsed);
+            };
+        };
     },
 };

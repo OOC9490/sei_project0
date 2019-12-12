@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
- 
+
+@-ms-viewport{
+    width: device-width;
+}
 
 body {
     margin: 0;
@@ -19,9 +22,9 @@ h1 {
 
 .buttonHolder{
     position: relative;
-    margin: 100px auto 10px;
+    margin: 50px auto 10px;
     color: white;
-    width:330px;
+    width: 330px;
 }
 
 .aiCheck{
@@ -34,15 +37,7 @@ h1 {
 #aiDropdown{
     font-size:18px;
     width:160px;
-}
-
-input[type=checkbox]{
-    -ms-transform: scale(1.5); /* IE */
-  -moz-transform: scale(1.5); /* FF */
-  -webkit-transform: scale(1.5); /* Safari and Chrome */
-  -o-transform: scale(1.5); /* Opera */
-  transform: scale(1.5);
-  /* padding: 10px; */
+    border: 2px;
 }
 
 .userButton {
