@@ -9,10 +9,12 @@ const userInterface = {
             $(`.userButton`).css(`pointerEvents`, `none`);
             $(`.aiMsg`).text(`Computer is making a move!`)
         }else{
-            $(`td`).css(`pointerEvents`, `all`);
-            $(`.userButton`).css(`pointerEvents`, `all`);
-            gameLogic.computerHasMoved = false;
-            $(`.aiMsg`).text(``);
+            setTimeout(function(){
+                $(`td`).css(`pointerEvents`, `all`);
+                $(`.userButton`).css(`pointerEvents`, `all`);
+                gameLogic.computerHasMoved = false;
+                $(`.aiMsg`).text(``);
+            },2000);
         };
     },
 
