@@ -24,6 +24,7 @@ I started the project having "separation of concerns" in mind and was able to su
 - The use of html element classes for the application styles and certain logic checks
 - Players can switch tiles if they change their mind
 - Game progression is managed by the user (details below)
+- User interface manipulation and game logic files are kept separate from each other
 
 ## Playing the application
 1. Select the token you want to play with. (You can play with the computer if you check the radio button before choosing a token)
@@ -51,4 +52,3 @@ A list of things I intend to enhance the current build with in my spare time:
 - [ ] Implementing a more responsive interface
 - [ ] Rendering and handling a larger game board
 - [ ] Enable the use of different player tokens
-- [ ] Community Suggestions
