@@ -23,8 +23,10 @@ const userInterface = {
         this.$userMsg.text(``);
         if (drawCheck){
             msgOutput = `This game is a draw!`;
+            this.$drawSound.play();
         }else{
             msgOutput = `${turnplayer} is the winner!`;
+            this.$winSound.play();
         };
         this.$winOrDraw.text(msgOutput).animate({
             opacity: 0
@@ -110,9 +112,11 @@ const userInterface = {
             }else{
                 gridLocation.addClass(`red`).html(`O`);// O tiles are always red
             }
+            this.$placeTokenSound.play();
         }else if (gridContents === gameLogic.currentPlayerTurn && gridLocation.hasClass(`used`) === false){
             gridLocation.removeClass(`blue red`).html(``);
-            $(`td:not(".used")`).addClass(`gridEffect`); //
+            this.$removeTokenSound.play();
+            $(`td:not(".used")`).addClass(`gridEffect`);
             this.drawnOnce = false;
             gameLogic.turnCompleteToggle();
             this.turnMessage(gameLogic.currentPlayerTurn, gameLogic.gameOnGoing, true);
@@ -144,4 +148,9 @@ $(document).ready(function(){
     userInterface.$buttonHolders = $(`.buttonHolder`);
     userInterface.$userMsg = $(`.userMessages`);
     userInterface.$winOrDraw = $(`.winOrDrawMsg`);
+    userInterface.$placeTokenSound = $(`.eventSounds`)[0];
+    userInterface.$removeTokenSound = $(`.eventSounds`)[1];
+    userInterface.$winSound = $(`.eventSounds`)[2];
+    userInterface.$drawSound = $(`.eventSounds`)[3];
+
 });
