@@ -61,6 +61,7 @@ const userInterface = {
             $(`td`).on(`click`, function(){
                 userInterface.drawOrErase($(this));
             });
+            gameLogic.restartGame();
         });
         this.drawnOnce = false;
     },
@@ -71,11 +72,7 @@ const userInterface = {
         if ( buttonPressed.hasClass(`cross`) || buttonPressed.hasClass(`circle`)){
             this.$tilesNotUsed = $(`td:not(".used")`);
             this.$tilesNotUsed.addClass(`gridEffect`);
-            if ( $(`#aiDropdown`).val() === `Player vs CPU`){
-                gameLogic.computerEnabled = true;
-            };
         }else if ( buttonPressed.hasClass(`restart`)){
-            gameLogic.restartGame();
             this.clearBoard();
         };
     },
@@ -84,12 +81,12 @@ const userInterface = {
     checkButton: function(buttonPressed){
         if (buttonPressed.hasClass(`cross`)){
             const priority = `X`;
-            gameLogic.gameStart(priority, `O`);
             this.toggleHolders(buttonPressed);
+            gameLogic.gameStart(priority, `O`);
         }else if (buttonPressed.hasClass(`circle`)){
             const priority = `O`;
-            gameLogic.gameStart(priority, `X`);
             this.toggleHolders(buttonPressed);
+            gameLogic.gameStart(priority, `X`);
         }else if (buttonPressed.hasClass(`pass`)){
             if (this.$currentTileSelected !== undefined){
                 this.$currentTileSelected.addClass(`used`);

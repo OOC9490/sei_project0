@@ -28,8 +28,8 @@ const gameLogic = {
         const $tileChoice = $tilesNotUsed.eq(Math.floor(Math.random()*$tilesNotUsed.length));
         setTimeout(function(){
             $tileChoice.click();
-            this.computerHasMoved = true;
-            userInterface.toggleUserInteraction(this.computerHasMoved);
+            gameLogic.computerHasMoved = true;
+            userInterface.toggleUserInteraction(gameLogic.computerHasMoved);
         },2000);
         setTimeout(function(){
             $(`.pass`).click();
@@ -123,9 +123,12 @@ const gameLogic = {
         userInterface.turnMessage(this.currentPlayerTurn, this.gameOnGoing, this.turnComplete);
         this.gameOnGoing = true;
         this.turnComplete = false;
+        if ( $(`#aiDropdown`).val() === `Player vs CPU`){
+            this.computerEnabled = true;
+        };
         if (this.computerEnabled === true){
-            this.humanHasMoved = true;
             if (Math.random() >= 0.5){
+                this.humanHasMoved = true;
                 this.computerPlays(userInterface.$tilesNotUsed);
             };
         };
