@@ -32,8 +32,8 @@ const userInterface = {
             opacity: 0
         },4000, function(){
             userInterface.$winOrDraw.text(``).css(`opacity`, `1`);
+            $(`.restart`).click();
         });
-        $(`.restart`).click();
     },
 
     //increases the win counter for the appropriate player
@@ -53,6 +53,7 @@ const userInterface = {
     clearBoard: function(){
         $(`.userButton`).off(`click`);
         $(`td`).html(``).removeClass(`blue red gridEffect used`).off(`click`);
+        this.$drawSound.play();
         this.$userMsg.text(`RESTARTING! Please wait...`).animate({
             opacity: 0
         },4000, function(){
@@ -152,5 +153,4 @@ $(document).ready(function(){
     userInterface.$removeTokenSound = $(`.eventSounds`)[1];
     userInterface.$winSound = $(`.eventSounds`)[2];
     userInterface.$drawSound = $(`.eventSounds`)[3];
-
 });
