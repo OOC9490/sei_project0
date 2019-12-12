@@ -8,7 +8,7 @@ https://ooc9490.github.io/sei_project0/
 
 Here's what an image of what you'll be greeted with:
 
-![Website Screenshot](url placeholder)
+![Website Screenshot](/images/project0_screenshot.png)
 
 ## Approaching the Solution
 It was a little bit surprising how much thought I had to take between steps to reach a solution I was happy to present... If I had to break it down, this was the general flow of my work:
