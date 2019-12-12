@@ -5,6 +5,8 @@ const gameLogic = {
     playerOneSymbol: ``,
     playerTwoSymbol: ``,
     currentPlayerTurn: ``,
+    humanHasMoved: false,
+    computerHasMoved: false,
     xWins: 0,
     oWins: 0,
     tilesFilled: 0,
@@ -19,12 +21,24 @@ const gameLogic = {
         "#seven.colour, #five.colour, #three.colour"
     ],//winning combos are found based on finding elements with a matching id and class arranged in a manner specified above 
     
+    //disables user's ability to interact with the game for 2 seconds before computer makes a move
+    computerPlays: function( $tilesNotUsed ){
+        userInterface.toggleUserInteraction(this.computerHasMoved);
+        const $tileChoice = $tilesNotUsed.eq(Math.floor(Math.random()*$tilesNotUsed.length));
+        setTimeout(function(){
+            $tileChoice.click();
+            $(`.pass`).click();
+            this.computerHasMoved = true;
+            userInterface.toggleUserInteraction(this.computerHasMoved);
+        },2000);
+    },
+
     //maps the current board state against the known winning combos
     findWinningCombo: function(winConArray, colour) {
         return winConArray.map(function(winCon) {
           let winConChecker = winCon.replace(/colour/g, colour);
           return winConChecker = $(winConChecker).length === 3;
-        })
+        });
     },
 
     winOrDraw: function (){
@@ -58,7 +72,15 @@ const gameLogic = {
             this.currentPlayerTurn = this.playerOneSymbol;
         };
         userInterface.turnMessage(this.currentPlayerTurn, this.gameOnGoing, this.turnComplete);
+        if ( this.humanHasMoved === false && this.turnComplete === true){
+            this.humanHasMoved = true;
+        }else{
+            this.humanHasMoved = false;
+        };
         this.turnCompleteToggle();
+        if ( this.computerHasMoved === false && this.humanHasMoved === true ){
+            this.computerPlays(userInterface.$tilesNotUsed);
+        };
     },
 
     turnCompleteToggle: function (){
@@ -73,6 +95,8 @@ const gameLogic = {
         this.gameOnGoing = false;
         this.turnComplete = true;
         this.isDraw = false;
+        this.humanHasMoved = false;
+        this.computerHasMoved = false;
         this.tilesFilled = 0;
         this.playerOneSymbol = ``;
         this.playerTwoSymbol = ``;

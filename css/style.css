@@ -1,9 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
-    
+ 
+
 body {
     margin: 0;
     box-sizing: border-box;
     display: block;
+    background-image: url("../images/chalkboard.jpg");
+    background-size: cover ;
+    background-repeat: no-repeat;
+    color: white;
+    height: 100vh;
 }
 
 h1 {
@@ -35,6 +41,7 @@ h1 {
 .userButton:hover{
     background-color: cornflowerblue;
     color: white;
+    pointer-events: all;
 }
 
 #gameDescription p{
@@ -60,7 +67,7 @@ table {
 }
 
 td {
-    border: 2px solid black;
+    border: 2px solid white;
     border-radius: 20%;
     height: 75px;
     width: 75px;
@@ -77,12 +84,12 @@ td {
 
 td {
     font-size: 48px;
+    pointer-events: all;
 }
 
 
 footer {
     position: fixed;
-    color: white;
     background-color: slategrey;
     width:100vw;
     bottom:0;

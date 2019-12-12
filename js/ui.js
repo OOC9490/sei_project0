@@ -1,6 +1,18 @@
 const userInterface = {
     drawOnce: false,
-    currentBoardSpot: undefined, // a key that will be used to plot the tile the turn player has selected
+    $currentTileSelected: undefined, // a key that will be used to plot the tile the turn player has selected
+    $tilesNotUsed: undefined, //will be defined once the game is going
+
+    toggleUserInteraction: function ( computerHasMoved ){
+        if ( computerHasMoved === false ){
+            $(`td`).css(`pointerEvents`, `none`);
+            $(`.userButton`).css(`pointerEvents`, `none`);
+        }else{
+            $(`td`).css(`pointerEvents`, `all`);
+            $(`.userButton`).css(`pointerEvents`, `all`);
+            gameLogic.computerHasMoved = false;
+        };
+    },
 
     winDrawMsg: function( turnplayer, drawCheck ){
         let msgOutput = ``;
@@ -71,10 +83,11 @@ const userInterface = {
             gameLogic.gameStart(priority, `X`);
             this.toggleHolders(buttonPressed);
         }else if (buttonPressed.hasClass(`pass`)){
-            if (this.currentBoardSpot !== undefined){
-                this.currentBoardSpot.addClass(`used`);
+            if (this.$currentTileSelected !== undefined){
+                this.$currentTileSelected.addClass(`used`);
             };//prevents the console from throwing errors when the board is fresh
-            $(`td:not(".used")`).addClass(`gridEffect`);
+            this.$tilesNotUsed = $(`td:not(".used")`);
+            this.$tilesNotUsed.addClass(`gridEffect`);
             gameLogic.switchTurn();
             this.drawOnce = false;
         }else{
@@ -104,11 +117,11 @@ const userInterface = {
     drawOrErase: function(gridLocation){
         if ( gridLocation.html() === `` && this.drawOnce === false && gameLogic.gameOnGoing === true){
             this.fillGrid(gridLocation.html(), gridLocation);
-            this.currentBoardSpot = gridLocation;
+            this.$currentTileSelected = gridLocation;
             gameLogic.turnCompleteToggle();
         }else if (gameLogic.gameOnGoing === true && gridLocation.html() !== ``) {
             this.fillGrid(gridLocation.html(), gridLocation);
-            this.currentBoardSpot = undefined;
+            this.$currentTileSelected = undefined;
         };
     },
 };
