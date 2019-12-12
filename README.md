@@ -6,10 +6,8 @@ This is a brief overview of the technologies used, instructions using the applic
 If you want to just get straight into the application follow this link:
 https://ooc9490.github.io/sei_project0/
 
-**OR**
-
-If you want to take a look at what I am adding to the project you can headover to:
-https://github.com/OOC9490/sei_project0_withAI
+Here's what an image of what you'll be greeted with:
+![Website Screenshot](url placeholder)
 
 ## Approaching the Solution
 It was a little bit surprising how much thought I had to take between steps to reach a solution I was happy to present... If I had to break it down, this was the general flow of my work:
@@ -20,8 +18,15 @@ It was a little bit surprising how much thought I had to take between steps to r
 
 I started the project having "separation of concerns" in mind and was able to successfully separate all components that interacted with the UI and the back-end. I would also quite often, look back and try to refactor the code where I saw too much repetition. During the program's construction, I never really worked on more than two or three functions that interacted with each other, as to not divide my attention too much **AND** avoid overthinking whatever it was I was doing. Once the game was functional, I would review the code to try and address whatever issues I was having or implement what "wants" I had for the project.
 
+## Key Features
+- Simple AI (can be toggled)
+- Player win tallies
+- The use of html element classes for the application styles and certain logic checks
+- Players can switch tiles if they change their mind
+- Game progression is managed by the user (details below)
+
 ## Playing the application
-1. Select the token you want to play with.
+1. Select the token you want to play with. (You can play with the computer if you check the radio button before choosing a token)
 2. Select a tile on the board and then press "Confirm" to end your turn and pass play to the other player. Some notes regarding your turn:
     - You can take back your move before you hit "Confirm" by clicking on the same tile you just placed a token in (You won't be able to take back a previous turn's move though!)
     - You can't pass play until you have filled a tile with a token
@@ -40,6 +45,8 @@ I started the project having "separation of concerns" in mind and was able to su
 2. Pre-rendering a gameboard - this limited me to a 3 by 3 board, but it wasn't something I wanted to prioritise heavily in creating the program.
 
 ## For the future
+A list of things I intend to enhance the current build with in my spare time:
+
 - [ ] Addition of an AI that utilises the "Minimax Algorithm"
 - [ ] Implementing a more responsive interface
 - [ ] Rendering and handling a larger game board
