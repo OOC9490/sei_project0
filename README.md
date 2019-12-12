@@ -7,6 +7,7 @@ If you want to just get straight into the application follow this link:
 https://ooc9490.github.io/sei_project0/
 
 Here's what an image of what you'll be greeted with:
+
 ![Website Screenshot](url placeholder)
 
 ## Approaching the Solution
