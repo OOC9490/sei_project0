@@ -70,6 +70,9 @@ const userInterface = {
         this.$buttonHolders.toggle();
         if ( buttonPressed.hasClass(`cross`) || buttonPressed.hasClass(`circle`)){
             $(`td`).addClass(`gridEffect`);
+            if ( $(`#aiDropdown`).val() === `Player vs CPU`){
+                gameLogic.computerEnabled = true;
+            };
         }else if ( buttonPressed.hasClass(`restart`)){
             gameLogic.restartGame();
             this.clearBoard();

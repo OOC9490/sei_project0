@@ -14,16 +14,27 @@
             <h1>Tic Tac Toe</h1>
         </header>
         <div class="buttonHolder gameStart">
+            <div class="aiCheck">
+                <select id="aiDropdown">
+                    <option>Player vs Player</option>
+                    <option>Player vs CPU</option>                    
+                </select>
+            </div>
             <button class="userButton cross" type="button">X Starts</button>
-            <button class="userButton circle" type="button">O Starts</button>        
+            <button class="userButton circle" type="button">O Starts</button>
         </div>
         <div class="buttonHolder inGame">
             <button class="userButton pass" type="button">Confirm</button>
             <button class="userButton restart" type="button">Restart</button>        
         </div>
         <div class="gameContainer">
-            <div class="scoreLabel X">X Wins:
-                <p>0</p>
+            <div class="tallyHolder">
+                <div class="scoreLabel X">X Wins:
+                    <p>0</p>
+                </div>
+                <div class="scoreLabel O">O Wins:
+                    <p>0</p>
+                </div>
             </div>
             <table>
                 <tr>
@@ -42,9 +53,6 @@
                     <td id="nine"></td>
                 </tr>
             </table>
-            <div class="scoreLabel O">O Wins:
-                <p>0</p>
-            </div>
         </div>
         <div class="winOrDrawMsg"></div>
         <div class="userMessages"></div>

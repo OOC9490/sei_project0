@@ -5,32 +5,55 @@ body {
     margin: 0;
     box-sizing: border-box;
     display: block;
-    background-image: url("../images/superMario3Hills.jpg");
-    background-size: cover ;
+    background-image: url("../images/Super-Mario-1080-Main.jpg");
     background-repeat: no-repeat;
-    height: 100vh;
+    height: 100%;
 }
 
 h1 {
     margin: 0 0 10px 0;
-    background-color: slategrey;
+    background-color:#fc9838;
     color: white;
     padding: 10px 0 10px;
 }
 
 .buttonHolder{
     position: relative;
-    width: 75vh;
-    margin: 10px auto 0;
-    height: 60px;
+    margin: 100px auto 10px;
+    color: white;
+    width:330px;
+}
+
+.aiCheck{
+    width:160px;
+    margin: 0 auto 10px;
+    color: black;
+    font-size: 12px;
+}
+
+#aiDropdown{
+    font-size:18px;
+    width:160px;
+}
+
+input[type=checkbox]{
+    -ms-transform: scale(1.5); /* IE */
+  -moz-transform: scale(1.5); /* FF */
+  -webkit-transform: scale(1.5); /* Safari and Chrome */
+  -o-transform: scale(1.5); /* Opera */
+  transform: scale(1.5);
+  /* padding: 10px; */
 }
 
 .userButton {
     height:50px;
     width:75px;
     border-radius: 20%;
-    margin: 0 10px;
+    margin: 0 auto;
     font-size: 9px;
+    display:inline-block;
+    border-color: darkgray black black slategray;
+
 }
 
 .inGame{
@@ -43,14 +66,6 @@ h1 {
     pointer-events: all;
 }
 
-#gameDescription p{
-    width: 80vw;
-    font-size: 13px;
-    text-align: justify;
-    margin: 0 auto;
-    position: relative;
-    color:white;
-}
 
 header, td, div, .userButton, footer {
     font-family: 'Press Start 2P', cursive;
@@ -64,13 +79,14 @@ table {
     border-spacing: 0;
     position: relative;
     display: inline-block;
+    margin-top: 5px;
 }
 
 td {
     border: 4px solid black;
     border-radius: 20%;
-    height: 75px;
-    width: 75px;
+    height: 100px;
+    width: 100px;
 }
 
 .userMessages, .winOrDrawMsg, .aiMsg{
@@ -78,34 +94,37 @@ td {
     width: 100%;
     height: 20px;
     font-size: 14px;
-    color: white;
+    margin-top: 10px;
 }
 
 
 td {
-    font-size: 48px;
+    font-size: 72px;
     pointer-events: all;
 }
 
 
 footer {
     position: fixed;
-    background-color: slategrey;
-    width:100vw;
+    background-color:#fc9838;
+    width:100%;
     bottom:0;
     padding: 5px 0 5px 5px;
     color: white;
 }
 
-.blue{
-    background-color:blue;
-    color: white;
+.scoreLabel.X {
+    float: left;
+}
+
+.scoreLabel.O {
+    float: right;
 }
 
 .gameContainer{
-    display:inline-block;
-    left: calc(50vw - 280px);
-    position: relative;
+    display:block;
+    margin: 0 auto;
+    width: 330px;
 }
 
 .scoreLabel{
@@ -113,8 +132,6 @@ footer {
     position: relative;
     text-align: center;
     padding: 3px 0 0 3px;
-    margin: 0 10px;
-    bottom: 98px;
     border: solid 3px;
     border-color: darkgray black black slategray;
     background-color: slategray;
@@ -125,7 +142,10 @@ footer {
     background-color:red;
     color: white;
 }
-
+.blue{
+    background-color:blue;
+    color: white;
+}
 .gridEffect:hover {
     background-image: url("../images/superMarioBlock.gif");
     background-size: cover;

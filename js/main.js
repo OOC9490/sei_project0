@@ -7,6 +7,7 @@ const gameLogic = {
     currentPlayerTurn: ``,
     humanHasMoved: false,
     computerHasMoved: false,
+    computerEnabled: false,
     xWins: 0,
     oWins: 0,
     tilesFilled: 0,
@@ -21,7 +22,7 @@ const gameLogic = {
         "#seven.colour, #five.colour, #three.colour"
     ],//winning combos are found based on finding elements with a matching id and class arranged in a manner specified above 
     
-    //disables user's ability to interact with the game for 4.5 seconds before computer makes a move
+    //disables user's ability to interact with the game for 4 seconds before computer makes a move
     computerPlays: function( $tilesNotUsed ){
         userInterface.toggleUserInteraction(this.computerHasMoved);
         const $tileChoice = $tilesNotUsed.eq(Math.floor(Math.random()*$tilesNotUsed.length));
@@ -29,10 +30,10 @@ const gameLogic = {
             $tileChoice.click();
             this.computerHasMoved = true;
             userInterface.toggleUserInteraction(this.computerHasMoved);
-        },2500);
+        },2000);
         setTimeout(function(){
             $(`.pass`).click();
-        },4500);
+        },4000);
     },
 
     //maps the current board state against the known winning combos
@@ -80,7 +81,7 @@ const gameLogic = {
             this.humanHasMoved = false;
         };
         this.turnCompleteToggle();
-        if ( this.computerHasMoved === false && this.humanHasMoved === true ){
+        if ( this.computerHasMoved === false && this.humanHasMoved === true && this.computerEnabled === true){
             this.computerPlays(userInterface.$tilesNotUsed);
         };
     },
