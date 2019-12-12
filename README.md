@@ -60,3 +60,4 @@ A list of things I intend to enhance the current build with in my spare time:
 - [ ] Implementing a more responsive interface
 - [ ] Rendering and handling a larger game board
 - [ ] Enable the use of different player tokens
+- [ ] Network multiplayer implementation
