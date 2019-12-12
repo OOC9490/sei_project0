@@ -36,7 +36,9 @@ I started the project having "separation of concerns" in mind and was able to su
 4. You can reset the gameboard at any time by clicking "Restart" (**NOTE:** there is a four second load time for the game board to become "live" again)
 5. The game board will automatically reset if a winner hasn't been found after the 9th turn of play has been confirmed. (Shares the same load time as the "Restart" function)
 
-**NOTE:** when playing with the CPU, the game intentionally disables the ability to interact with the gameboard and buttons for 4 seconds. The human player can resume play after the "Computer is making a move!" message disappears.
+**NOTE:** when playing with the CPU bear in mind the following:
+- there is a 50/50 chance that the CPU will take the first turn (regardless of the token you choose)
+- the game intentionally disables the ability to interact with the gameboard and buttons for 4 seconds. The human player can resume play after the "Computer is making a move!" message disappears.
 
 ## Technologies used
 - HTML
