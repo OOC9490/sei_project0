@@ -1,6 +1,6 @@
 const gameLogic = {
     gameOnGoing: false,
-    turnComplete: true,
+    turnComplete: true, //starts true to allow the game to display the correct UI messages before the 1st move
     isDraw: false,
     playerOneSymbol: ``,
     playerTwoSymbol: ``,
@@ -22,7 +22,7 @@ const gameLogic = {
         "#seven.colour, #five.colour, #three.colour"
     ],//winning combos are found based on finding elements with a matching id and class arranged in a manner specified above 
     
-    //disables user's ability to interact with the game for 4 seconds before computer makes a move
+    //disables user's ability to interact with the game for 4 seconds before computer makes a move, simulates the CPU "thinking"
     computerPlays: function( $tilesNotUsed ){
         userInterface.toggleUserInteraction(this.computerHasMoved);
         const $tileChoice = $tilesNotUsed.eq(Math.floor(Math.random()*$tilesNotUsed.length));
@@ -71,21 +71,21 @@ const gameLogic = {
             userInterface.winDrawMsg(this.currentPlayerTurn, this.isDraw);
             return;
         }; //determines whether or not there is a draw
+        //game continues if a draw or win is not recognised
         if (this.currentPlayerTurn === this.playerOneSymbol){
             this.currentPlayerTurn = this.playerTwoSymbol;
         }else{
             this.currentPlayerTurn = this.playerOneSymbol;
         };
         userInterface.turnMessage(this.currentPlayerTurn, this.gameOnGoing, this.turnComplete);
-        if ( this.humanHasMoved === false && this.turnComplete === true){
+        //check if the CPU player is enabled
+        if ( this.humanHasMoved === false && this.turnComplete === true && this.computerEnabled === true){
             this.humanHasMoved = true;
+            this.computerPlays(userInterface.$tilesNotUsed);
         }else{
             this.humanHasMoved = false;
         };
         this.turnCompleteToggle();
-        if ( this.computerHasMoved === false && this.humanHasMoved === true && this.computerEnabled === true){
-            this.computerPlays(userInterface.$tilesNotUsed);
-        };
     },
 
     turnCompleteToggle: function (){

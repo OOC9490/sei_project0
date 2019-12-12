@@ -103,7 +103,7 @@ const userInterface = {
     //function checks whether or not the clicked tile is being used and draws according to whos turn it is or erases it if the tile was filled this turn
     fillGrid: function(gridContents, gridLocation){
         if (gridContents === ``){
-            $(`td`).removeClass(`gridEffect`);
+            $(`td`).removeClass(`gridEffect`); //removes the hover css from tiles to help indicate you cant interact with the grid anymore
             this.drawnOnce = true;
             if (gameLogic.currentPlayerTurn === `X`){
                 gridLocation.addClass(`blue`).html(`X`);// X tiles are always blue
@@ -112,9 +112,10 @@ const userInterface = {
             }
         }else if (gridContents === gameLogic.currentPlayerTurn && gridLocation.hasClass(`used`) === false){
             gridLocation.removeClass(`blue red`).html(``);
-            $(`td:not(".used")`).addClass(`gridEffect`);
+            $(`td:not(".used")`).addClass(`gridEffect`); //
             this.drawnOnce = false;
             gameLogic.turnCompleteToggle();
+            this.turnMessage(gameLogic.currentPlayerTurn, gameLogic.gameOnGoing, true);
         };
     },
 
@@ -127,6 +128,8 @@ const userInterface = {
         }else if (gameLogic.gameOnGoing === true && gridLocation.html() !== ``) {
             this.fillGrid(gridLocation.html(), gridLocation);
             this.$currentTileSelected = undefined;
+        }else if (gameLogic.gameOnGoing){
+            this.$userMsg.text(`You've already placed a token!`);
         };
     },
 };
