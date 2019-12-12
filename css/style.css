@@ -56,7 +56,7 @@ header, td, div, .userButton, footer {
     font-family: 'Press Start 2P', cursive;
 }
 
-h1, .buttonHolder, td, .userMessages, .winOrDrawMsg {
+h1, .buttonHolder, td, .userMessages, .winOrDrawMsg, .aiMsg {
     text-align: center;
 }
 
@@ -73,12 +73,12 @@ td {
     width: 75px;
 }
 
-.userMessages, .winOrDrawMsg{
+.userMessages, .winOrDrawMsg, .aiMsg{
     position: relative;
     width: 100%;
     height: 20px;
-    /* padding: px 0 0 0; */
     font-size: 14px;
+    color:white;
 }
 
 
@@ -117,6 +117,8 @@ footer {
     bottom: 98px;
     border: solid 3px;
     border-color: darkgray black black slategray;
+    background-color: slategray;
+    color:white;
 }
 
 .red{

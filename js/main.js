@@ -21,7 +21,7 @@ const gameLogic = {
         "#seven.colour, #five.colour, #three.colour"
     ],//winning combos are found based on finding elements with a matching id and class arranged in a manner specified above 
     
-    //disables user's ability to interact with the game for 2 seconds before computer makes a move
+    //disables user's ability to interact with the game for 3 seconds before computer makes a move
     computerPlays: function( $tilesNotUsed ){
         userInterface.toggleUserInteraction(this.computerHasMoved);
         const $tileChoice = $tilesNotUsed.eq(Math.floor(Math.random()*$tilesNotUsed.length));
@@ -30,7 +30,7 @@ const gameLogic = {
             $(`.pass`).click();
             this.computerHasMoved = true;
             userInterface.toggleUserInteraction(this.computerHasMoved);
-        },2000);
+        },3000);
     },
 
     //maps the current board state against the known winning combos
