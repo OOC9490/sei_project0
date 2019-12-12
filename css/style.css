@@ -27,6 +27,16 @@ h1 {
     width: 330px;
 }
 
+.userButton {
+    height:50px;
+    width:75px;
+    border-radius: 20%;
+    margin: 0 auto;
+    font-size: 9px;
+    display:inline-block;
+    border-color: darkgray black black slategray;
+}
+
 .aiCheck{
     width:160px;
     margin: 0 auto 10px;
@@ -40,17 +50,6 @@ h1 {
     border: 2px;
 }
 
-.userButton {
-    height:50px;
-    width:75px;
-    border-radius: 20%;
-    margin: 0 auto;
-    font-size: 9px;
-    display:inline-block;
-    border-color: darkgray black black slategray;
-
-}
-
 .inGame{
     display: none;
 }
@@ -58,7 +57,7 @@ h1 {
 .userButton:hover{
     background-color: cornflowerblue;
     color: white;
-    pointer-events: all;
+    pointer-events: all;    
 }
 
 
