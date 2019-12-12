@@ -6,7 +6,7 @@ This is a brief overview of the technologies used, instructions using the applic
 If you want to just get straight into the application follow this link:
 https://ooc9490.github.io/sei_project0/
 
-Here's what an image of what you'll be greeted with:
+Here's an image of what you'll be greeted with:
 
 ![Website Screenshot](/images/project0_screenshot.png)
 
@@ -36,6 +36,8 @@ I started the project having "separation of concerns" in mind and was able to su
 4. You can reset the gameboard at any time by clicking "Restart" (**NOTE:** there is a four second load time for the game board to become "live" again)
 5. The game board will automatically reset if a winner hasn't been found after the 9th turn of play has been confirmed. (Shares the same load time as the "Restart" function)
 
+**NOTE:** when playing with the CPU, the game intentionally disables the ability to interact with the gameboard and buttons for 4 seconds. The human player can resume play after the "Computer is making a move!" message disappears.
+
 ## Technologies used
 - HTML
 - CSS
@@ -45,6 +47,7 @@ I started the project having "separation of concerns" in mind and was able to su
 ## Problems in the creation of Tic Tac Toe
 1. Not hard coding "winning combinations" for the program to check against
 2. Pre-rendering a gameboard - this limited me to a 3 by 3 board, but it wasn't something I wanted to prioritise heavily in creating the program.
+3. Not being able to implement the game with enough logic to determine a draw before the entire game board is filled.
 
 ## For the future
 A list of things I intend to enhance the current build with in my spare time:
