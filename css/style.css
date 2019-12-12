@@ -5,10 +5,9 @@ body {
     margin: 0;
     box-sizing: border-box;
     display: block;
-    background-image: url("../images/chalkboard.jpg");
+    background-image: url("../images/superMario3Hills.jpg");
     background-size: cover ;
     background-repeat: no-repeat;
-    color: white;
     height: 100vh;
 }
 
@@ -50,6 +49,7 @@ h1 {
     text-align: justify;
     margin: 0 auto;
     position: relative;
+    color:white;
 }
 
 header, td, div, .userButton, footer {
@@ -67,7 +67,7 @@ table {
 }
 
 td {
-    border: 2px solid white;
+    border: 4px solid black;
     border-radius: 20%;
     height: 75px;
     width: 75px;
@@ -94,6 +94,7 @@ footer {
     width:100vw;
     bottom:0;
     padding: 5px 0 5px 5px;
+    color: white;
 }
 
 .blue{
@@ -124,6 +125,6 @@ footer {
 }
 
 .gridEffect:hover {
-    background-image: url("../images/redBlueSwirl.gif");
+    background-image: url("../images/superMarioBlock.gif");
     background-size: cover;
 }
